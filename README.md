@@ -1,54 +1,79 @@
-*API de Triagem Psicossocial Gestacional
+# API de Triagem Psicossocial Gestacional
 
-API REST desenvolvida com FastAPI para apoio à triagem psicossocial de gestantes, utilizando informações derivadas dos instrumentos EPDS (Edinburgh Postnatal Depression Scale) e GAD-7 (Generalized Anxiety Disorder Assessment).
+API REST desenvolvida com **FastAPI** para apoio à triagem psicossocial de gestantes, utilizando informações derivadas dos instrumentos **EPDS (Edinburgh Postnatal Depression Scale)** e **GAD-7 (Generalized Anxiety Disorder Assessment)**.
 
 A aplicação realiza o cálculo de escores, interpreta fatores de risco e gera orientações iniciais com base nos resultados obtidos.
 
-Aviso: Esta API possui finalidade educacional e acadêmica. Não substitui avaliação, diagnóstico ou acompanhamento realizado por profissionais de saúde.
+> ⚠️ **Aviso:** Esta API possui finalidade educacional e acadêmica. Não substitui avaliação, diagnóstico ou acompanhamento realizado por profissionais de saúde.
 
-*Objetivo
+---
+
+# Objetivo
 
 O projeto foi desenvolvido com o objetivo de demonstrar a construção de uma API REST utilizando boas práticas de desenvolvimento, organização em camadas, validação de dados e documentação automática.
 
 Além do aspecto técnico, a solução foi inspirada em um estudo sobre saúde mental perinatal, buscando transformar conhecimento acadêmico em uma aplicação prática.
 
-*Funcionalidades
-- Cálculo de Escores
+---
+
+# Funcionalidades
+
+## 📊 Cálculo de Escores
+
 Calcula automaticamente os escores dos instrumentos EPDS e GAD-7 a partir das respostas informadas.
 
-Endpoint
-POST /v1/triagem/calcular-escores
+**Endpoint**
 
-- Interpretação dos Fatores de Risco
+```http
+POST /v1/triagem/calcular-escores
+```
+
+## 🔍 Interpretação dos Fatores de Risco
 
 Analisa características psicossociais e gera interpretações relacionadas aos possíveis fatores de vulnerabilidade.
 
-Endpoint
-POST /v1/triagem/interpretar-fatores
+**Endpoint**
 
-- Geração de Orientações
+```http
+POST /v1/triagem/interpretar-fatores
+```
+
+## 💡 Geração de Orientações
 
 Gera recomendações iniciais de acordo com os resultados obtidos nos instrumentos e fatores informados.
 
-Endpoint
+**Endpoint**
 
+```http
 POST /v1/triagem/gerar-orientacao
+```
 
-- Health Check
+## ❤️ Health Check
 
 Verifica se a aplicação está em funcionamento.
 
-Endpoint
+**Endpoint**
+
+```http
 GET /health
+```
 
-*Tecnologias Utilizadas
-Python 3.12
-FastAPI
-Pydantic
-Uvicorn
-OpenAPI / Swagger
+---
 
-*Estrutura do Projeto
+# Tecnologias Utilizadas
+
+- Python 3.12
+- FastAPI
+- Pydantic
+- Uvicorn
+- OpenAPI
+- Swagger
+
+---
+
+# Estrutura do Projeto
+
+```text
 app/
 ├── core/
 │   ├── config.py
@@ -67,50 +92,87 @@ app/
 │   └── orientacao_service.py
 │
 └── main.py
+```
 
 A arquitetura foi organizada em camadas para facilitar manutenção, escalabilidade e separação de responsabilidades.
 
-*Instalação
+---
+
+# Instalação
 
 Clone o repositório:
 
-git clone https://github.com/seu-usuario/api-triagem-gestacional.git
+```bash
+git clone https://github.com/julianajonson/api-triagem-gestacional.git
+```
 
 Acesse a pasta do projeto:
 
+```bash
 cd api-triagem-gestacional
+```
 
 Crie um ambiente virtual:
 
+```bash
 python -m venv .venv
+```
 
 Ative o ambiente:
 
-Windows
+### Windows
+
+```bash
 .venv\Scripts\activate
-Linux/Mac
+```
+
+### Linux / Mac
+
+```bash
 source .venv/bin/activate
+```
 
 Instale as dependências:
 
+```bash
 pip install -r requirements.txt
-Executando a Aplicação
+```
+
+---
+
+# Executando a Aplicação
+
+```bash
 uvicorn app.main:app --reload
+```
 
 A API ficará disponível em:
 
+```text
 http://127.0.0.1:8000
-Documentação Interativa
+```
 
-Swagger UI:
+---
 
+# Documentação Interativa
+
+### Swagger UI
+
+```text
 http://127.0.0.1:8000/docs
+```
 
-ReDoc:
+### ReDoc
 
+```text
 http://127.0.0.1:8000/redoc
-Exemplo de Requisição
-Cálculo dos Escores
+```
+
+---
+
+# Exemplo de Requisição
+
+```json
 {
   "epds_respostas": [3,2,2,1,2,1,2,1,1,0],
   "gad7_respostas": [2,2,1,1,2,1,1],
@@ -121,19 +183,37 @@ Cálculo dos Escores
   "situacao_financeira": "instavel",
   "diagnostico_previo": true
 }
-Exemplo de Resposta
+```
+
+---
+
+# Exemplo de Resposta
+
+```json
 {
   "epds_score": 15,
   "gad7_score": 10,
   "classificacao_epds": "Risco Elevado",
   "classificacao_gad7": "Ansiedade Moderada"
 }
-Motivação
+```
+
+---
+
+# Motivação
 
 Este projeto foi inspirado em uma pesquisa sobre fatores associados a sintomas depressivos durante a gestação, realizada com gestantes brasileiras utilizando os instrumentos EPDS e GAD-7.
 
 O objetivo foi aplicar conceitos de desenvolvimento de APIs REST a um contexto real da área da saúde, promovendo a integração entre tecnologia, análise de dados e impacto social.
 
-Autora
+---
 
-Juliana Jonson
+# Autora
+
+**Juliana Jonson**
+
+---
+
+# Licença
+
+Projeto desenvolvido para fins acadêmicos e educacionais.
